@@ -211,58 +211,32 @@ public class Algoritmo3Optimizado {
         return listaOrdenada;
     }
 
-    public static void main(String[] args) {
-        //List<String> secuenciasLista1 = Arrays.asList("ASKJF", "ASUUB", "ABCDE", "LMNOP", "FGFYY", "ZFCVBN", "ABCDE", "FGHIJ", "KLMNO", "PQRST", "UVWXY", "ABCDE", "FGHIJ", "KLMNO", "STPQR", "UVWXY", "ABCDE", "IFGHJ", "NOKLM", "PQSRT", "UVVWY", "ABCDE", "FGHIJ", "OKLMN", "PQRST", "UVWXY", "PORUYT", "ASKASD", "MNBOIU", "QWERAS", "ASDSEFG", "DFFKLMN", "OERZNCC", "VWXYZAB", "CDEFGHI", "ASDFJKF");
-        //List<String> secuenciasLista2 = Arrays.asList("AJKIU", "ASIJK", "ABNME", "CCNIP", "VWXYY", "ZADBNO", "ABXYZ", "FXYIZ", "KXYIZ", "PXYIZ", "UXYIZ", "ABCXZ", "FGHXZ", "KLMXZ", "PQRXZ", "UVWXZ", "XYABC", "FGHXY", "KLMXY", "PQXRY", "UVCWY", "ABCDY", "YFGHI", "YKLMN", "PQRYT", "UVWXY", "POIUKJ", "POKLSD", "MHCEIU", "QWISAS", "ABCDEFG", "HIJKLON", "OPRSDAS", "OPVFZAB", "CQZAQZI", "JKFAHFG");
-        
-        /*
-        
-          // Valores para la lista 1
-        List<String> secuenciasLista1 = Arrays.asList(
-            "GXR",
-            "SDDD",
-            "SDKES",
-            "GEGYRA",
-            "KEGHISV",
-            "SHDGDAGQ",
-            "KEGHIDJFH",
-            "GAVLIDHFJK",
-            "VALIMFYWKRQ",
-            "GAVLIMFYWKRQ",
-            "VALIMFYWKRQNE",
-            "RQNEGHILSTYRAG",
-            "VALIMFYWKRQNEG",
-            "RQNEGHILSTDYRAGQ"
-        );
+    private static List<String> leerSecuenciasDesdeConsola() {
+        Scanner scanner = new Scanner(System.in);
+        List<String> secuencias = new ArrayList<>();
+        System.out.println("Ingrese las secuencias (una por línea, termine con una línea vacía):");
+        while (true) {
+            String linea = scanner.nextLine();
+            if (linea.isEmpty()) {
+                break;
+            }
+            secuencias.add(linea);
+        }
+        return secuencias;
+    }
 
-        // Valores para la lista 2
-        List<String> secuenciasLista2 = Arrays.asList(
-            "GSR",
-            "ADCG",
-            "QNKEF",
-            "METYRA",
-            "KEGHISV",
-            "METYRAGQ",
-            "KEGHISVAL",
-            "GAVLIMFYWK",
-            "VALIMFYWKRQ",
-            "DHMUYVTIPQIPX",
-            "YCIPMXDXQIMSWA",
-            "SQFHBEDEFXAPFA",
-            "EQXXYIPFGODPZFOU",
-            "YSNBXIZCIDSLNUYET"
-        );
-        
-        */
-        
-        //experimento 2.1 
-        //List<String> secuenciasLista1 = Arrays.asList("CSDFGAYCKEKGHWAKJHDC");
-        //List<String> secuenciasLista2 = Arrays.asList("CFABCNCGKEGHIAOPKNC");
-        
-        //experimento 3.1
-        List<String> secuenciasLista1 = Arrays.asList("CAYCKEKGHWAKDC");
-        List<String> secuenciasLista2 = Arrays.asList("CFNCGKEGHIAKNC");
-        
+    public static void main(String[] args) {
+        List<String> secuenciasLista1;
+        List<String> secuenciasLista2;
+
+        if (args.length >= 2) {
+            secuenciasLista1 = Arrays.asList(args[0].split(","));
+            secuenciasLista2 = Arrays.asList(args[1].split(","));
+        } else {
+            secuenciasLista1 = leerSecuenciasDesdeConsola();
+            secuenciasLista2 = leerSecuenciasDesdeConsola();
+        }
+
         List<String> lista1 = new ArrayList<>();
         List<String> lista2 = new ArrayList<>();
 
@@ -291,7 +265,7 @@ public class Algoritmo3Optimizado {
 
             long duration = (endTime - startTime) / 1000000; // Convertir a milisegundos
 
-            System.out.println("Patrón final para el par (" + secuenciasLista1.get(i) + ", " + secuenciasLista2.get(i) + "): " + listaOrdenada.get(0)+"  "+ duration + " ms");
+            System.out.println("Patrón final para el par (" + secuenciasLista1.get(i) + ", " + secuenciasLista2.get(i) + "): " + listaOrdenada.get(0) + "  " + duration + " ms");
             //System.out.println("Tiempo para encontrar el patrón: " + duration + " ms");
         }
     }
